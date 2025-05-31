@@ -1,54 +1,120 @@
-University Workshop Management System
+# University Workshop Management System
 
 A Spring Boot application for managing university workshops, sessions, and participants.
 
-The University Workshop Management System (WMS) is designed to facilitate the organization and management of academic workshops. It allows tracking of:
+## 📌 Overview
 
-Workshops and their details
-Workshop sessions
-Presenters
-Undergraduate participants
-Postgraduate participants
+The **University Workshop Management System (WMS)** is designed to streamline the organization and management of academic workshops at universities. It enables tracking and management of:
 
-Technical Stack
-Framework: Spring Boot
-Database: MySQL
-ORM: Hibernate/JPA
-Language: Java
+- Workshops and their details  
+- Workshop sessions  
+- Presenters  
+- Undergraduate participants  
+- Postgraduate participants  
 
-Data Model
+## 🛠️ Technical Stack
 
-Core Entities
+- **Framework:** Spring Boot  
+- **Database:** MySQL  
+- **ORM:** Hibernate / JPA  
+- **Language:** Java  
 
-1.Person (MappedSuperclass)
-Base class for all person entities
-Fields: email, gender, name, phone
+## 🧩 Data Model
 
-2.Workshop
+### 🔹 Core Entities
 
-Represents a workshop event
-Fields: id, name, description, start_date, end_date
+#### 1. `Person` (MappedSuperclass)
+> Base class for all person entities.
 
-3.Session
+- Fields:
+  - `email`
+  - `gender`
+  - `name`
+  - `phone`
 
-Represents individual sessions within workshops
-Fields: id, name, description, date, time, workshop_id
-Relationships: Many-to-Many with presenters, undergraduates, and postgraduates
+---
 
-4.Presenter
+#### 2. `Workshop`
+> Represents a workshop event.
 
-Extends Person
-Fields: id, affiliation, country, job_title
-Relationships: Many-to-Many with sessions
+- Fields:
+  - `id`
+  - `name`
+  - `description`
+  - `start_date`
+  - `end_date`
 
-5.Undergraduate
+---
 
-Extends Person
-Fields: id, degree, university
-Relationships: Many-to-Many with sessions
+#### 3. `Session`
+> Represents individual sessions within workshops.
 
-6.Postgraduate
+- Fields:
+  - `id`
+  - `name`
+  - `description`
+  - `date`
+  - `time`
+  - `workshop_id`
 
-Extends Person
-Fields: id, institute, research_interest, second_degree
-Relationships: Many-to-Many with sessions
+- Relationships:
+  - Many-to-Many with `Presenter`
+  - Many-to-Many with `Undergraduate`
+  - Many-to-Many with `Postgraduate`
+
+---
+
+#### 4. `Presenter` (extends `Person`)
+> Represents workshop presenters.
+
+- Fields:
+  - `id`
+  - `affiliation`
+  - `country`
+  - `job_title`
+
+- Relationships:
+  - Many-to-Many with `Session`
+
+---
+
+#### 5. `Undergraduate` (extends `Person`)
+> Represents undergraduate participants.
+
+- Fields:
+  - `id`
+  - `degree`
+  - `university`
+
+- Relationships:
+  - Many-to-Many with `Session`
+
+---
+
+#### 6. `Postgraduate` (extends `Person`)
+> Represents postgraduate participants.
+
+- Fields:
+  - `id`
+  - `institute`
+  - `research_interest`
+  - `second_degree`
+
+- Relationships:
+  - Many-to-Many with `Session`
+
+---
+
+## ✅ Features
+
+- Create and manage workshop events
+- Schedule and organize sessions under workshops
+- Manage presenter, undergraduate, and postgraduate information
+- Assign participants and presenters to specific sessions
+
+## 🚀 Getting Started
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/university-wms.git
+
